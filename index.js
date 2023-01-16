@@ -1,12 +1,11 @@
 const express = require("express");
-const bodyParser = require("body-parser");
 const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use('/public', express.static(`${__dirname}/public`));
 
 app.post("/chatbot", (req, res) => {
-    res.set({'Access-Control-Allow-Origin': '*'})
+    res.setHeader('Access-Control-Allow-Origin',  '*')
     const message = req.body.message;
     const number = message.match(/\d+/);
     if (number) {
