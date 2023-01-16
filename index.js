@@ -6,6 +6,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use('/public', express.static(`${__dirname}/public`));
 
 app.post("/chatbot", (req, res) => {
+    res.header('Access-Control-Allow-Origin', '*')
     const message = req.body.message;
     const number = message.match(/\d+/);
     if (number) {
