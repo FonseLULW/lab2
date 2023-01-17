@@ -12,13 +12,10 @@ app.use(cors({
 }));
 
 app.post("/chatbot", (req, res) => {
-    console.log("Req: ", req);
-    res.header("Access-Control-Allow-Origin", '*')
     const message = req.body.message;
     const number = message.match(/\d+/);
     if (number) {
         fetch(`http://numbersapi.com/${number}?type=trivia`).then(response => response.text()).then(data => {
-            console.log("Res: ", res);
             res.json({
                 "text": data
             });
