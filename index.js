@@ -2,10 +2,9 @@ const express = require("express");
 const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use('/public', express.static(`${__dirname}/public`));
 
 app.post("/chatbot", (req, res) => {
-    res.header('Access-Control-Allow-Origin', '*')
+    res.header("Access-Control-Allow-Origin", '*')
     const message = req.body.message;
     const number = message.match(/\d+/);
     if (number) {
@@ -25,11 +24,7 @@ app.post("/chatbot", (req, res) => {
     }
 });
 
-app.get("/", (req, res) => {
-    res.sendFile(__dirname + "/index.html");
-});
-
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
