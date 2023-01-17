@@ -8,7 +8,7 @@ app.use(cors({
     "methods": "GET,HEAD,PUT,PATCH,POST,DELETE",
     "preflightContinue": false,
     "optionsSuccessStatus": 204,
-    "allowedHeaders": "Content-Type, Authorization, Content-Length, X-Requested-With, Access-Control-Allow-Origin, *",
+    "allowedHeaders": "Access-Control-Allow-Origin, *",
 }));
 
 app.post("/chatbot", (req, res) => {
